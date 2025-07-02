@@ -2,7 +2,8 @@ class Solution {
 public:
     int strStr(string haystack, string needle) {
         int index=haystack.find(needle);
-        if(haystack.find(needle)!=string::npos){
+        int n=haystack.size();
+        if(haystack.find(needle)<n){
             return index;
         }
         return -1;
