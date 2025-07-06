@@ -21,12 +21,11 @@ public:
     
     int count(int tot) {
         int cnt = 0;
-        for (int a : nums1) {
-            int b = tot - a;
-            if (freq.count(b)) {
-                cnt += freq[b];
-            }
-        }
-        return cnt;
+       for(int i=0;i<nums1.size();i++){
+        int a=nums1[i];
+        int b=tot-a;
+        cnt+=freq[b];
+       }
+       return cnt;
     }
 };
