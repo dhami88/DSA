@@ -10,8 +10,9 @@ public:
         while(i<n&&j<m){
             if(trainers[j]>=players[i]){
                 i++;
+                j++;
             }
-            j++;
+           else j++;
         }
         return i;
     }
