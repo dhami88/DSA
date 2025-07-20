@@ -24,7 +24,7 @@ public:
         j++;
       }
       int x=ans.size();
-      if(x%2==0) return (ans[(x/2)-1]+ans[(x/2)])/2.0;
+      if(x%2==0) return (double)(ans[(x/2)-1]+ans[(x/2)])/2;
      else  return ans[x/2];
     }
 };
