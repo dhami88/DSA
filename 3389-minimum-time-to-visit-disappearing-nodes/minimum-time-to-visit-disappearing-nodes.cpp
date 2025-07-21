@@ -17,7 +17,7 @@ public:
             int time=pq.top().first;
             int node=pq.top().second;
             pq.pop();
-            if(time>=disappear[node]) continue;
+          //  if(time>=disappear[node]) continue;
             if(time>dist[node]) continue;
 
             for(auto it:adj[node]){
