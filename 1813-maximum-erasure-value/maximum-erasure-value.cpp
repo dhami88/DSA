@@ -6,7 +6,7 @@ public:
         int maxSum = 0, currentSum = 0;
 
         while (right < nums.size()) {
-            while (seen.count(nums[right])) {
+            while (seen.find(nums[right])!=seen.end()) {
                 seen.erase(nums[left]);
                 currentSum -= nums[left];
                 left++;
