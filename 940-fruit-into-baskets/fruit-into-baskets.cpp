@@ -8,11 +8,12 @@ public:
         for(int r=0;r<n;r++){
             m[fruits[r]]++;
             while(m.size()>2){
-                m[fruits[l]]--;
-                if(m[fruits[l]]==0){
-                    m.erase(fruits[l]);
-                }
+                m[fruits[l]]--;            
+            if(m[fruits[l]]==0) {
+                m.erase(fruits[l]);
+            }
                 l++;
+            
             }
             ans=max(ans,r-l+1);
         }
