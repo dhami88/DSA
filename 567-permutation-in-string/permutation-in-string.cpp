@@ -3,7 +3,7 @@ public:
     bool checkInclusion(string s1, string s2) {
         int n=s1.size();
         int m=s2.size();
-        sort(s1.begin(),s1.end());
+       // sort(s1.begin(),s1.end());
         //sliding window approach --length of sliding window = n
         map<char,int>m1;
         map<char,int>m2;
