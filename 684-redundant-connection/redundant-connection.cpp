@@ -35,7 +35,7 @@ public:
     vector<int> findRedundantConnection(vector<vector<int>>& edges) {
         //kruskals algorithm for mst
         int n=edges.size();
-        vector<int>ans;
+        //vector<int>ans;
        disjointset ds(n);
         for(auto it:edges){
             int a=it[0];
@@ -44,10 +44,11 @@ public:
                 ds.unionbysize(a,b);
             }
             else {
-                ans.push_back(a);
-                ans.push_back(b);
+                // ans.push_back(a);
+                // ans.push_back(b);
+                return {a,b};
             }
         }
-        return ans;
+        return {};
     }
 };
