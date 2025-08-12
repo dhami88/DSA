@@ -19,23 +19,23 @@ public:
         for(int i = 1 ; n >= pow(i , x);i++){
             arr.push_back( (int)pow(i , x));
         }
-        vector<vector<int>> dp(arr.size()+1 , vector<int>(n+1 , -1));
+        vector<vector<int>> dp(arr.size()+1 , vector<int>(n+1 , 0));
 
-         return func(arr , n , 0 , 0 , dp );
+         //return func(arr , n , 0 , 0 , dp );
 
-        // for(int i = 0 ;i <= arr.size();i++) dp[i][n] = 1;
+        for(int i = 0 ;i <= arr.size();i++) dp[i][n] = 1;
 
-        // for(int i = arr.size()-1;i>=0;i--){
+        for(int i = arr.size()-1;i>=0;i--){
 
-        //     for(int sum = 0 ; sum < n;sum++){
-        //         int take = 0;
-        //         if(sum +  arr[i] <= n) take = dp[i+1][sum+arr[i]];
-        //         int notake = dp[i+1][sum];
-        //         dp[i][sum] = (take + notake)%mod;
-        //     }
-        // }
+            for(int sum = 0 ; sum < n;sum++){
+                int take = 0;
+                if(sum +  arr[i] <= n) take = dp[i+1][sum+arr[i]];
+                int notake = dp[i+1][sum];
+                dp[i][sum] = (take + notake)%mod;
+            }
+        }
 
-        // return dp[0][0];
+        return dp[0][0];
 
     }
 };
