@@ -1,7 +1,6 @@
-bool comp(const vector<int>& a, const vector<int>& b) {
-    if (a[0] == b[0]) 
-        return a[1] > b[1];  // descending order of 2nd element
-    return a[0] < b[0];      // ascending order of 1st element
+bool comp(vector<int>&a,vector<int>&b){
+    if(a[0]==b[0]) return a[1]>b[1];
+    else return a[0]<b[0];
 }
 
 class Solution {
