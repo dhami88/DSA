@@ -3,7 +3,7 @@ public:
     long long maxProfit(vector<int>& prices, vector<int>& strategy, int k) {
         int n=prices.size();
         vector<long long >p1(n),p2(n);
-        long long sum1=0LL,sum2=0LL;
+        long long sum1=0,sum2=0;
         for(int i=0;i<n;i++){
             sum1+=prices[i];
             sum2+=(prices[i]*strategy[i]);
