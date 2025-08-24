@@ -1,8 +1,8 @@
 class Solution {
     int dfs(int headID,vector<vector<int>>&adj,vector<int>& informTime,int curtime){
-        int maxtime=0;
-        if (adj[headID].empty())
-    return curtime;
+        int maxtime=curtime;
+    //     if (adj[headID].empty())
+    // return curtime;
         for(auto it:adj[headID]){
            maxtime=max(maxtime, dfs(it,adj,informTime,curtime+informTime[headID]));
         }
