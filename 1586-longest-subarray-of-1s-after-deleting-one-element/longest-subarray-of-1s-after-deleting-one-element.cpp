@@ -2,7 +2,7 @@ class Solution {
 public:
     int longestSubarray(vector<int>& nums) {
         int n=nums.size();
-        if(n==1&&nums[0]==0) return 0;
+        //if(n==1&&nums[0]==0) return 0;
        map<int,int>m;
        //sliding window with at most 1 zero
         int l=0;
