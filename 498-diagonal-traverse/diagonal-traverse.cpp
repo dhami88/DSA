@@ -10,13 +10,15 @@ public:
             }
         }
         vector<int>ans;
+        bool flag=true;
         for(auto it:mp){
-           if((it.first)%2==0){
+           if(flag){
             reverse(it.second.begin(),it.second.end());
            }
            for(auto x:it.second){
             ans.push_back(x);
            }
+           flag=!flag;
         }
         return ans;
     }
