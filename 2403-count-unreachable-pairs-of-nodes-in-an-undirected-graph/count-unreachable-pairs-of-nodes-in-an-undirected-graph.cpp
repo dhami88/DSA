@@ -1,20 +1,13 @@
 class Solution {
-    void bfs(int node,vector<vector<int>>&adj,vector<int>&vis,long long &size){
-        int n=adj.size();
+    void dfs(int node,vector<int>&vis,vector<vector<int>>&adj,long long &size){
         vis[node]=1;
-        queue<int>q;
-        q.push(node);
-        while(!q.empty()){
-            int no=q.front();
-            size++;
-            q.pop();
-            for(auto it:adj[no]){
-                if(!vis[it]){
-                    q.push(it);
-                    vis[it]=1;
-                }
+        size++;
+        for(auto it:adj[node]){
+            if(!vis[it]){
+                dfs(it,vis,adj,size);
             }
         }
+
     }
 public:
     long long countPairs(int n, vector<vector<int>>& edges) {
@@ -28,10 +21,10 @@ public:
         vector<int>vis(n,0);
         long long rem=n;
         long long ans=0;
-        for (int i=0;i<n;i++){
+        for(int i=0;i<n;i++){
             if(!vis[i]){
                 long long size=0;
-                bfs(i,adj,vis,size);
+                dfs(i,vis,adj,size);
                 rem-=size;
                 ans+=size*rem;
             }
