@@ -6,7 +6,7 @@ public:
         if(grid[0][0]==1||grid[n-1][n-1]==1) return -1;
         queue<pair<int,pair<int,int>>>q;
         vector<vector<int>>dist(n,vector<int>(n,1e9));
-        dist[0][0]=0;
+        dist[0][0]=1;
         q.push({1,{0,0}});
         while(!q.empty()){
             int r=q.front().second.first;
