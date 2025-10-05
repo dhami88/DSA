@@ -7,7 +7,7 @@ public:
         queue<pair<int,pair<int,int>>>q;
         vector<vector<int>>dist(n,vector<int>(n,1e9));
         dist[0][0]=0;
-        q.push({0,{0,0}});
+        q.push({1,{0,0}});
         while(!q.empty()){
             int r=q.front().second.first;
             int c=q.front().second.second;
@@ -20,7 +20,7 @@ public:
                     if(nr>=0&&nr<n&&nc>=0&&nc<n&&grid[nr][nc]==0&&1+wt<dist[nr][nc]){
                         dist[nr][nc]=1+wt;
                         q.push({dist[nr][nc],{nr,nc}});
-                        if(nr==n-1&&nc==n-1) return 1+dist[nr][nc];
+                        if(nr==n-1&&nc==n-1) return dist[nr][nc];
                     }
                 }
             }
