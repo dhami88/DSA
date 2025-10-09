@@ -1,35 +1,61 @@
+class disjointset{
+    vector<int>parent,size;
+    public:
+    disjointset(int n){
+        parent.resize(n+1);
+        size.resize(n+1);
+        for(int i=0;i<=n;i++){
+            parent[i]=i;
+            size[i]=1;
+        }
+    }
+    int findupar(int node){
+        if(node==parent[node]) return node;
+        return parent[node]=findupar(parent[node]);
+    }
+    
+    void unionbysize(int u,int v){
+        int ulp_u=findupar(u);
+        int ulp_v=findupar(v);
+        if(ulp_u==ulp_v) return ;
+        if(size[ulp_u]<size[ulp_v]){
+            parent[ulp_u]=ulp_v;
+            size[ulp_v]+=size[ulp_u];
+        }
+        else {
+            parent[ulp_v]=ulp_u;
+            size[ulp_u]+=size[ulp_v];
+        }
+    }
+};
+
 class Solution {
 public:
     int minCostConnectPoints(vector<vector<int>>& points) {
         int n=points.size();
-        vector<vector<pair<int,int>>>adj(n);
+        vector<pair<int,pair<int,int>>>adj(n);
         for(int i=0;i<n;i++){
             for(int j=i+1;j<n;j++){
                 int m=abs(points[i][0]-points[j][0])+abs(points[i][1]-points[j][1]);
-                adj[i].push_back({j,m});
-                adj[j].push_back({i,m});
+                adj.push_back({m,{i,j}});
+                adj.push_back({m,{j,i}});
             }
         }
         //now finding the mst
-        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        sort(adj.begin(),adj.end());
         vector<int>vis(n,0);
-        pq.push({0,0});
-        int ans=0;
-        while(!pq.empty()){
-            int wt=pq.top().first;
-            int node=pq.top().second;
-            pq.pop();
-            if(vis[node]==1) continue;
-            vis[node]=1;
-            ans+=wt;
-            for(auto it:adj[node]){
-                int no=it.first;
-                int ww=it.second;
-                if(!vis[no]){
-                    pq.push({ww,no});
-                }
+       disjointset ds(n);
+       int ans=0;
+       for(auto it:adj){
+            int u=it.second.first;
+            int v=it.second.second;
+            int wt=it.first;
+            if(ds.findupar(u)!=ds.findupar(v)){
+                ans+=wt;
+                ds.unionbysize(u,v);
             }
-        }
-        return ans;
+
+       }
+       return ans;
     }
 };
