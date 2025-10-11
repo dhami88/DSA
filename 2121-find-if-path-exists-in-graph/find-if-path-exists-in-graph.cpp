@@ -17,10 +17,19 @@ public:
             adj[v].push_back(u);
         }
         vector<int>vis(n,0);
-        
-            if(!vis[source]){
-                dfs(source,vis,adj,destination);
+       queue<int>q;
+       q.push(source);
+       vis[source]=1;
+       while(!q.empty()){
+        int node=q.front();
+        q.pop();
+        for(auto it:adj[node]){
+            if(!vis[it]){
+                q.push(it);
+                vis[it]=1;
             }
+        }
+       }
        if(vis[destination]==0) return false;
        return true;
     }
