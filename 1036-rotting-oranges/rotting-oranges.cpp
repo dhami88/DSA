@@ -1,6 +1,7 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
+        //multisource bfs
         int n=grid.size();
         int m=grid[0].size();
         vector<vector<int>>vis(n,vector<int>(m,0));
