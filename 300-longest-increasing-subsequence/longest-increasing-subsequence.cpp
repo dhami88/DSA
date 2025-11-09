@@ -13,18 +13,21 @@ class Solution {
 public:
     int lengthOfLIS(vector<int>& nums) {
         int n=nums.size();
-        vector<vector<int>>dp(n+1,vector<int>(n+1,0));
+      //  vector<vector<int>>dp(n+1,vector<int>(n+1,0));
+      vector<int>front(n+1,0),cur(n+1,0);
         //return f(0,-1,nums,dp);
         for(int ind=n-1;ind>=0;ind--){
             for(int prev=ind-1;prev>=-1;prev--){
-                int nottake=dp[ind+1][prev+1];
+                int nottake=front[prev+1];
             int take=INT_MIN;
              if(prev==-1||nums[ind]>nums[prev]){
-            take=1+dp[ind+1][ind+1];
+            take=1+front[ind+1];
         }
-         dp[ind][prev+1]=max(take,nottake);
+         cur[prev+1]=max(take,nottake);
             }
+             front=cur;
         }
-        return dp[0][0];
+      
+        return front[0];
     }
 };
